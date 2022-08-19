@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 const Home: NextPage = () => {
 
     const dispatch = useDispatch()
-    const [text, setText] = useState('');
     const translations = useSelector(translationState)
     const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
     const API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -52,8 +51,6 @@ const Home: NextPage = () => {
         setText(data.translations[0].text)
     }
 
-    console.log("translations", translations)
-
     return (
         <>
             <div>Microphone: {listening ? 'on' : 'off'}</div>
@@ -86,6 +83,7 @@ const TransButton: FC<ButtonProps> = ({
                                       }) => {
 
     const text = (lang === LangType.JAPANESE) ? '日本語' : '中国語'
+
     return (
         <button
             onTouchStart={() => startListening(lang)}
