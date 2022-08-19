@@ -4,7 +4,7 @@ import { RootState } from '../store/store';
 export interface Translation {
     orgWord: string
     cvtWord: string
-    type: typeof LangType
+    type: string
 }
 
 export const LangType = {
@@ -17,7 +17,8 @@ export interface TranslationState {
 }
 
 export const initialState: TranslationState = {
-    translations: [],
+    translations: [
+    ],
 }
 
 const translationSlice = createSlice({
