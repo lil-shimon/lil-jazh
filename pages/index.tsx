@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
-import { FC, useState } from "react";
+import { FC } from "react";
 import { LangType, setTranslations, Translation, translationState } from "../slicers/translation";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -48,7 +48,6 @@ const Home: NextPage = () => {
             cvtWord: data.translations[0].text,
             type: lang
         }))
-        setText(data.translations[0].text)
     }
 
     return (
@@ -57,7 +56,6 @@ const Home: NextPage = () => {
             <TransButton lang={LangType.JAPANESE} startListening={startListening} stopListening={stopListening}/>
             <TransButton lang={LangType.CHINESE} startListening={startListening} stopListening={stopListening}/>
             <div>{transcript}</div>
-            <div>{text}</div>
             {translations.map((t: Translation, index: number) => {
                 return (
                     <div key={index}>
