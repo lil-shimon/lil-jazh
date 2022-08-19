@@ -1,6 +1,7 @@
 import type { NextPage } from 'next'
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
-import { useState } from "react";
+import { FC, useState } from "react";
+import { LangType } from "../slicers/translation";
 
 const Home: NextPage = () => {
 
@@ -19,7 +20,9 @@ const Home: NextPage = () => {
         return <p>ブラウザがサポートしていません</p>
     }
 
-    const startListening = () => SpeechRecognition.startListening({ continuous: true })
+    const startListening = (lang: string) => {
+        SpeechRecognition.startListening({ continuous: true, language: lang })
+    }
 
     const stopListening = async () => {
         SpeechRecognition.stopListening()
@@ -43,17 +46,36 @@ const Home: NextPage = () => {
     return (
         <>
             <div>Microphone: {listening ? 'on' : 'off'}</div>
-            <button
-                onTouchStart={startListening}
-                onMouseDown={startListening}
-                onTouchEnd={stopListening}
-                onMouseUp={stopListening}
-            >
-                Hold to talk
-            </button>
+            <TransButton lang={LangType.JAPANESE} startListening={startListening} stopListening={stopListening}/>
+            <TransButton lang={LangType.CHINESE} startListening={startListening} stopListening={stopListening}/>
             <div>{transcript}</div>
             <div>{text}</div>
         </>
+    )
+}
+
+interface ButtonProps {
+    lang: string
+    startListening: (lang: string) => void
+    stopListening: () => void
+}
+
+const TransButton: FC<ButtonProps> = ({
+                                          lang,
+                                          startListening,
+                                          stopListening,
+                                      }) => {
+
+    const text = (lang === LangType.JAPANESE) ? '日本語' : '中国語'
+    return (
+        <button
+            onTouchStart={() => startListening(lang)}
+            onMouseDown={() => startListening(lang)}
+            onTouchEnd={stopListening}
+            onMouseUp={stopListening}
+        >
+            {text}
+        </button>
     )
 }
 
