@@ -9,7 +9,7 @@ export interface Translation {
 
 export const LangType = {
     JAPANESE: 'ja',
-    CHINESE: 'zh-CN',
+    CHINESE: 'zh',
 } as const
 
 export interface TranslationState {
@@ -26,12 +26,15 @@ const translationSlice = createSlice({
     reducers: {
         reset: (state) => {
             state.translations = []
+        },
+        setTranslations: (state, action) => {
+            state.translations = [...state.translations, action.payload]
         }
     }
 })
 
-export const { reset } = translationSlice.actions
+export const { reset, setTranslations } = translationSlice.actions
 
-export const translationState = (state: RootState) => state.translation
+export const translationState = (state: RootState) => state.translation.translations
 
 export default translationSlice.reducer
