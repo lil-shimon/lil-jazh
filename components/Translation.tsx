@@ -17,9 +17,7 @@ const Component: FC = () => {
         resetTranscript,
     } = useSpeechRecognition()
 
-    if (!browserSupportsSpeechRecognition) {
-        return <p>ブラウザがサポートしていません</p>
-    }
+    if (!browserSupportsSpeechRecognition) return <p>ブラウザがサポートしていません</p>
 
     const startListening = (lang: string) => {
         SpeechRecognition.startListening({ continuous: true, language: lang })

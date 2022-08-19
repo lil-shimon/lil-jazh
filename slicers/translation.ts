@@ -34,7 +34,7 @@ const translationSlice = createSlice({
     }
 })
 
-export const { reset, setTranslations } = translationSlice.actions
+export const { setTranslations } = translationSlice.actions
 
 export const translationState = (state: RootState) => state.translation.translations
 
