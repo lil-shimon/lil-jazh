@@ -1,11 +1,7 @@
-import React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
-import Drawer from '@mui/material/Drawer';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import { ReactNode } from "react";
+import React, { ReactNode } from 'react';
+
+import { AppBar, Box, Divider, Drawer, Toolbar, Typography } from "@mui/material"
+
 import { Footer } from "./Footer";
 
 interface Props {
@@ -64,7 +60,7 @@ export default function AppBarComponent(props: Props) {
                 {props.children}
             </Box>
 
-            <Footer />
+            <Footer/>
         </Box>
     );
 }
