@@ -4,9 +4,11 @@ import { TranslationComponent } from "../components/Translation";
 
 const Home: NextPage = () => {
     return (
-        <AppBarComponent>
-            <TranslationComponent />
-        </AppBarComponent>
+        <>
+            <AppBarComponent>
+                <TranslationComponent/>
+            </AppBarComponent>
+        </>
     )
 }
 

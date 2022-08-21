@@ -36,9 +36,9 @@ const Component: FC = () => {
             })}
             <ButtonContainer direction="row" spacing={8} sx={{ mt: 1.5 }}>
                 <TransButton lang={LangType.CHINESE} startListening={startListening} stopListening={stopListening}
-                             style={{ position: "fixed", right: "5%", bottom: "5%" }}/>
+                             style={{ position: "fixed", right: "5%", bottom: "7%" }}/>
                 <TransButton lang={LangType.JAPANESE} startListening={startListening} stopListening={stopListening}
-                             style={{ position: "fixed", left: "5%", bottom: "5%" }}/>
+                             style={{ position: "fixed", left: "5%", bottom: "7%" }}/>
             </ButtonContainer>
         </Container>
     )
@@ -77,7 +77,7 @@ const TransCard: FC<TransCardProps> = ({ translation }) => {
                     {translation.cvtWord}
                 </Typography>
                 <Typography color="text.secondary">
-                    {translation.orgWord}
+                    The original： {translation.orgWord}
                 </Typography>
             </CardContent>
         </Card>

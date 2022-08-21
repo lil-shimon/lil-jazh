@@ -6,6 +6,7 @@ import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { ReactNode } from "react";
+import { Footer } from "./Footer";
 
 interface Props {
     children: ReactNode;
@@ -62,6 +63,8 @@ export default function AppBarComponent(props: Props) {
                 <Toolbar/>
                 {props.children}
             </Box>
+
+            <Footer />
         </Box>
     );
 }
