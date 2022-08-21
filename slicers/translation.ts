@@ -29,7 +29,7 @@ const translationSlice = createSlice({
             state.translations = []
         },
         setTranslations: (state, action) => {
-            state.translations = [...state.translations, action.payload]
+            state.translations = [action.payload, ...state.translations]
         }
     }
 })
