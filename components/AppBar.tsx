@@ -30,7 +30,7 @@ export default function AppBarComponent(props: Props) {
     );
 
     return (
-        <Box sx={{ display: 'flex', width: '40%' }}>
+        <Box sx={{ display: 'flex', width: '100%' }}>
             <AppBar component="nav">
                 <Toolbar>
                     <Typography
@@ -58,7 +58,7 @@ export default function AppBarComponent(props: Props) {
                     {drawer}
                 </Drawer>
             </Box>
-            <Box component="main" sx={{ p: 3 }} style={{ margin: "0 auto" }}>
+            <Box component="main" sx={{ p: 3 }} style={{ margin: "0 auto", width: "100%" }}>
                 <Toolbar/>
                 {props.children}
             </Box>
