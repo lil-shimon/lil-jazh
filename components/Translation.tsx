@@ -28,12 +28,12 @@ const Component: FC = () => {
 
     return (
         <Container fixed>
+            <div>{transcript}</div>
             {translations.map((t: Translation, index: number) => {
                 return (
                     <TransCard translation={t} key={index}/>
                 )
             })}
-            <div>{transcript}</div>
             <ButtonContainer direction="row" spacing={8} sx={{ mt: 1.5 }}>
                 <TransButton lang={LangType.CHINESE} startListening={startListening} stopListening={stopListening}
                              style={{ position: "fixed", right: "5%", bottom: "5%" }}/>
