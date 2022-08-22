@@ -1,17 +1,16 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState } from 'react';
 
 import { AppBar, Box, Divider, Drawer, Toolbar, Typography } from "@mui/material"
 
 import { Footer } from "./Footer";
+import { DRAWER_WIDTH } from "../utils/constants";
 
 interface Props {
     children: ReactNode;
 }
 
-const drawerWidth = 120;
-
 export default function AppBarComponent(props: Props) {
-    const [mobileOpen, setMobileOpen] = React.useState(false);
+    const [mobileOpen, setMobileOpen] = useState(false);
 
     const handleDrawerToggle = () => {
         setMobileOpen(!mobileOpen);
@@ -49,7 +48,7 @@ export default function AppBarComponent(props: Props) {
                     }}
                     sx={{
                         display: { xs: 'block', sm: 'none' },
-                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+                        '& .MuiDrawer-paper': { boxSizing: 'border-box', width: DRAWER_WIDTH },
                     }}
                 >
                     {drawer}
