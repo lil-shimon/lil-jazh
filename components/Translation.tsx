@@ -70,6 +70,9 @@ const TransButton: FC<ButtonProps> = ({
 }
 
 const TransCard: FC<TransCardProps> = ({ translation }) => {
+
+    if (!translation.orgWord) return null
+
     return (
         <Card sx={{ minWidth: 275, mt: 1.5 }}>
             <CardContent>
@@ -87,7 +90,8 @@ const TransCard: FC<TransCardProps> = ({ translation }) => {
 const TransBtn = styled(Button)({
     borderRadius: "50%",
     width: "10rem",
-    height: "10rem"
+    height: "10rem",
+    backgroundColor: "white"
 })
 
 const ButtonContainer = styled(Stack)({

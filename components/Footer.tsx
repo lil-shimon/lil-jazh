@@ -21,7 +21,8 @@ const FooterContainer = styled(Box)({
     borderTop: "1px solid #e0e0e0",
     width: "100%",
     padding: "1%",
-    textAlign: "center"
+    textAlign: "center",
+    backgroundColor: "white"
 })
 
 export const Footer = memo(FooterComponent)
