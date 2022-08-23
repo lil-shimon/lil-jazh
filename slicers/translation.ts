@@ -17,17 +17,13 @@ export interface TranslationState {
 }
 
 export const initialState: TranslationState = {
-    translations: [
-    ],
+    translations: [],
 }
 
 const translationSlice = createSlice({
     name: 'translation',
     initialState: initialState,
     reducers: {
-        reset: (state) => {
-            state.translations = []
-        },
         setTranslations: (state, action) => {
             state.translations = [action.payload, ...state.translations]
         }

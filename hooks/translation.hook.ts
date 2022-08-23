@@ -2,6 +2,8 @@ import { useDispatch } from "react-redux";
 import { LangType, setTranslations } from "../slicers/translation";
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 import { API_KEY, API_URL } from "../utils/constants";
+import { toast } from "react-toastify";
+import { getLangName } from "../utils/helper";
 
 export const useTranslation = () => {
 
@@ -12,9 +14,11 @@ export const useTranslation = () => {
         resetTranscript,
     } = useSpeechRecognition()
 
+    const notify = (lang: string) => toast(`${lang}を聞いています。。。`)
 
     const startListening = (lang: string) => {
         SpeechRecognition.startListening({ continuous: true, language: lang })
+        notify(getLangName(lang))
     }
 
     const stopListening = async (lang: string) => {

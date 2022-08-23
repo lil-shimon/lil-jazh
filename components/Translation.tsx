@@ -1,4 +1,4 @@
-import { FC, memo } from "react";
+import { FC, memo, useEffect } from "react";
 
 import { useSelector } from "react-redux";
 import { useSpeechRecognition } from "react-speech-recognition";
@@ -6,6 +6,8 @@ import { Button, Card, CardContent, Container, Stack, styled, Typography } from 
 
 import { useTranslation } from "../hooks/translation.hook";
 import { LangType, Translation, translationState } from "../slicers/translation";
+import { toast } from "react-toastify";
+import { getLangName } from "../utils/helper";
 
 interface TransCardProps {
     translation: Translation
@@ -51,7 +53,7 @@ const TransButton: FC<ButtonProps> = ({
                                           style
                                       }) => {
 
-    const text = (lang === LangType.JAPANESE) ? '日本語' : '中国語'
+    const text = getLangName(lang)
     const colour = (lang === LangType.JAPANESE) ? 'primary' : 'secondary'
 
     return (
