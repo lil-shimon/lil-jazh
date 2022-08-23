@@ -7,6 +7,7 @@ import { Button, Card, CardContent, Container, Stack, styled, Typography } from 
 import { useTranslation } from "../hooks/translation.hook";
 import { LangType, Translation, translationState } from "../slicers/translation";
 import { toast } from "react-toastify";
+import { getLangName } from "../utils/helper";
 
 interface TransCardProps {
     translation: Translation
@@ -20,11 +21,6 @@ interface ButtonProps {
 }
 
 const Component: FC = () => {
-
-    const notify = () => toast("use effect")
-    useEffect(() => {
-        notify()
-    }, [])
 
     const translations = useSelector(translationState)
     const { startListening, stopListening, transcript } = useTranslation()
@@ -57,7 +53,7 @@ const TransButton: FC<ButtonProps> = ({
                                           style
                                       }) => {
 
-    const text = (lang === LangType.JAPANESE) ? '日本語' : '中国語'
+    const text = getLangName(lang)
     const colour = (lang === LangType.JAPANESE) ? 'primary' : 'secondary'
 
     return (
