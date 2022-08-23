@@ -1,4 +1,4 @@
-import { FC, memo } from "react";
+import { FC, memo, useEffect } from "react";
 
 import { useSelector } from "react-redux";
 import { useSpeechRecognition } from "react-speech-recognition";
@@ -6,6 +6,7 @@ import { Button, Card, CardContent, Container, Stack, styled, Typography } from 
 
 import { useTranslation } from "../hooks/translation.hook";
 import { LangType, Translation, translationState } from "../slicers/translation";
+import { toast } from "react-toastify";
 
 interface TransCardProps {
     translation: Translation
@@ -19,6 +20,11 @@ interface ButtonProps {
 }
 
 const Component: FC = () => {
+
+    const notify = () => toast("use effect")
+    useEffect(() => {
+        notify()
+    }, [])
 
     const translations = useSelector(translationState)
     const { startListening, stopListening, transcript } = useTranslation()
