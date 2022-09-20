@@ -1,4 +1,4 @@
-import { FC, memo, useEffect } from "react";
+import { FC, memo } from "react";
 
 import { useSelector } from "react-redux";
 import { useSpeechRecognition } from "react-speech-recognition";
@@ -6,7 +6,6 @@ import { Button, Card, CardContent, Container, Stack, styled, Typography } from 
 
 import { useTranslation } from "../hooks/translation.hook";
 import { LangType, Translation, translationState } from "../slicers/translation";
-import { toast } from "react-toastify";
 import { getLangName } from "../utils/helper";
 
 interface TransCardProps {
@@ -14,19 +13,21 @@ interface TransCardProps {
 }
 
 interface ButtonProps {
-    lang: string
+    lang:  string // Language type
+    style: any    // css
     startListening: (lang: string) => void
-    stopListening: (lang: string) => void
-    style: any
+    stopListening:  (lang: string) => void
 }
 
 const Component: FC = () => {
 
     const translations = useSelector(translationState)
-    const { startListening, stopListening, transcript } = useTranslation()
+    const { startVoiceRecording, stopVoiceRecording, transcript } = useTranslation()
     const { browserSupportsSpeechRecognition } = useSpeechRecognition()
 
-    if (!browserSupportsSpeechRecognition) return <p>ブラウザがサポートしていません</p>
+    if (!browserSupportsSpeechRecognition) {
+        return <p>ブラウザがサポートしていません</p>
+    } 
 
     return (
         <Container fixed>
@@ -37,9 +38,9 @@ const Component: FC = () => {
                 )
             })}
             <ButtonContainer direction="row" spacing={8} sx={{ mt: 1.5 }}>
-                <TransButton lang={LangType.CHINESE} startListening={startListening} stopListening={stopListening}
+                <TransButton lang={LangType.CHINESE} startListening={startVoiceRecording} stopListening={stopVoiceRecording}
                              style={{ position: "fixed", right: "5%", bottom: "7%" }}/>
-                <TransButton lang={LangType.JAPANESE} startListening={startListening} stopListening={stopListening}
+                <TransButton lang={LangType.JAPANESE} startListening={startVoiceRecording} stopListening={stopVoiceRecording}
                              style={{ position: "fixed", left: "5%", bottom: "7%" }}/>
             </ButtonContainer>
         </Container>
@@ -48,9 +49,9 @@ const Component: FC = () => {
 
 const TransButton: FC<ButtonProps> = ({
                                           lang,
+                                          style,
                                           startListening,
                                           stopListening,
-                                          style
                                       }) => {
 
     const text = getLangName(lang)
@@ -73,7 +74,9 @@ const TransButton: FC<ButtonProps> = ({
 
 const TransCard: FC<TransCardProps> = ({ translation }) => {
 
-    if (!translation.orgWord) return null
+    if (!translation.orgWord) { 
+        return null
+    }
 
     return (
         <Card sx={{ minWidth: 275, mt: 1.5 }}>
@@ -82,7 +85,7 @@ const TransCard: FC<TransCardProps> = ({ translation }) => {
                     {translation.cvtWord}
                 </Typography>
                 <Typography color="text.secondary">
-                    The original： {translation.orgWord}
+                    The original: {translation.orgWord}
                 </Typography>
             </CardContent>
         </Card>
