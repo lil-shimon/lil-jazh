@@ -6,7 +6,7 @@ import { Button, Card, CardContent, Container, Stack, styled, Typography } from 
 
 import { useTranslation } from "../hooks/translation.hook";
 import { LangType, Translation, translationState } from "../slicers/translation";
-import { getLangName } from "../utils/helper";
+import { toJapaneseFromLangType } from "../utils/helper";
 
 interface TransCardProps {
     translation: Translation
@@ -54,7 +54,7 @@ const TransButton: FC<ButtonProps> = ({
                                           stopListening,
                                       }) => {
 
-    const text = getLangName(lang)
+    const text = toJapaneseFromLangType(lang)
     const colour = (lang === LangType.JAPANESE) ? 'primary' : 'secondary'
 
     return (
