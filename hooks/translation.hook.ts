@@ -3,7 +3,7 @@ import { LangType, setTranslations } from "../slicers/translation";
 import SpeechRecognition, { useSpeechRecognition } from "react-speech-recognition";
 import { API_KEY, API_URL } from "../utils/constants";
 import { toast } from "react-toastify";
-import { getLangName } from "../utils/helper";
+import { toJapaneseFromLangType } from "../utils/helper";
 
 export const useTranslation = () => {
 
@@ -18,7 +18,7 @@ export const useTranslation = () => {
 
     const startVoiceRecording = (lang: string) => {
         SpeechRecognition.startListening({ continuous: true, language: lang })
-        notify(getLangName(lang))
+        notify(toJapaneseFromLangType(lang))
     }
 
     const stopVoiceRecording = async (lang: string) => {
