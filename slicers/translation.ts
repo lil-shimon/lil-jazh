@@ -2,14 +2,14 @@ import { createSlice } from "@reduxjs/toolkit"
 import { RootState } from '../store/store';
 
 export interface Translation {
-    orgWord: string
-    cvtWord: string
-    type: string
+    orgWord: string // 変換前の単語
+    cvtWord: string // 変換後の単語
+    type:    string // 言語の種類
 }
 
 export const LangType = {
     JAPANESE: 'ja',
-    CHINESE: 'zh',
+    CHINESE:  'zh',
 } as const
 
 export interface TranslationState {
